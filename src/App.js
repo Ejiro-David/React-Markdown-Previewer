@@ -5,8 +5,9 @@ import remarkGfm from 'remark-gfm'
 
 function App() {
 
+  
   const [markdown, setMarkdown] = useState(`# Welcome to my React Markdown Previewer!
-
+  
   ## This is a sub-heading...
   ### And here's some other cool stuff:
   
@@ -49,12 +50,14 @@ function App() {
   
   ![freeCodeCamp Logo](https://cdn.freecodecamp.org/testable-projects-fcc/images/fcc_secondary.svg)
   `);
+  //const vih = markdown.replace(/\n/gi, '\n &nbsp;')
 
   return (
     <div className="App flex justify-evenly bg-blue-100 h-5/6 m-6 gap-2 p-2 w-11/12 rounded-md">
       <textarea id="editor" className="resize-none bg-blue-400 basis-1/2 p-2" value={markdown} onChange={(e) => setMarkdown(e.target.value)}/>
-
-      <ReactMarkdown id="preview" remarkPlugins={[remarkGfm]} source={markdown} className="prose bg-blue-200 basis-1/2 p-2 break-all overflow-auto" >{markdown}</ReactMarkdown>
+      <div id="preview" className="prose bg-blue-200 basis-1/2 p-2 break-all overflow-auto">
+      <ReactMarkdown id="preview" remarkPlugins={[remarkGfm]} source={markdown} className="whitespace-pre-wrap"  >{markdown}</ReactMarkdown>
+      </div>
     </div>
   );
 }
